@@ -18,10 +18,12 @@ public class Contrat {
     private LocalDate dateSignature;
     private BigDecimal montantTotal;
     private boolean valide;
+
 @OneToMany(mappedBy = "contrat", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 private List<Paiement> paiements=new ArrayList<>() ;
 
-@OneToOne(fetch = FetchType.LAZY)
+@OneToOne(mappedBy = "contrat", fetch = FetchType.LAZY)
     private Reservation reservation;
+
 
 }
