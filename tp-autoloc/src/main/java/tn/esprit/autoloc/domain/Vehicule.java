@@ -20,7 +20,7 @@ import java.util.List;
 public class Vehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idVehicule;
+    private Long id;
     private String immatriculation;
     private String marque;
     private String modele;
