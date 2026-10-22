@@ -1,4 +1,5 @@
 package tn.esprit.autoloc.domain;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,12 +19,12 @@ public class Contrat {
     private LocalDate dateSignature;
     private BigDecimal montantTotal;
     private boolean valide;
+    @JsonManagedReference("contrat-paiements")
+    @OneToMany(mappedBy = "contrat", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+        private List<Paiement> paiements=new ArrayList<>() ;
 
-@OneToMany(mappedBy = "contrat", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-private List<Paiement> paiements=new ArrayList<>() ;
-
-@OneToOne(mappedBy = "contrat", fetch = FetchType.LAZY)
-    private Reservation reservation;
+    @OneToOne(mappedBy = "contrat", fetch = FetchType.LAZY)
+        private Reservation reservation;
 
 
 }

@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,6 +37,7 @@ public class Client {
 
     private LocalDate dateInscription;
 @OneToMany(mappedBy = "client",fetch = FetchType.LAZY)
+@JsonIgnore
     private List<Reservation> reservations= new ArrayList<>();
 
 }

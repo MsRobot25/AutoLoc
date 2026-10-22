@@ -1,4 +1,5 @@
 package tn.esprit.autoloc.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,8 +26,11 @@ public class Agence {
         private String adresse;
         private String telephone;
         @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+        @JsonIgnore
         private List<Vehicule> vehicules = new ArrayList<>();
+
         @OneToMany(mappedBy = "agence", fetch = FetchType.LAZY)
+        @JsonIgnore
         private List<Employe> employees = new ArrayList<>();
 
 }

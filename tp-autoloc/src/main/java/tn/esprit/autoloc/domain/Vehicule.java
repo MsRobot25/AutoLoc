@@ -1,4 +1,5 @@
 package tn.esprit.autoloc.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,11 +30,18 @@ public class Vehicule {
     private StatutVehicule statut;
     @ManyToOne (fetch = FetchType.LAZY)
     private Agence agence;
+
     @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Maintenance> maintenances = new ArrayList<>();
+
     @OneToMany(mappedBy ="vehicule", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Reservation> reservations= new ArrayList<>();
+
+
     @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Equipement>equipements=new ArrayList<>();
 
 }
